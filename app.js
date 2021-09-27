@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 
 const config = require("./config");
 const logger = require("./util/logger");
-const version = require("./routes/version");
-const user = require("./routes/user");
+const version = require("./routes/versionController");
+const user = require("./routes/userController");
 
 const app = express();
 
