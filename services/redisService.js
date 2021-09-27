@@ -9,7 +9,7 @@ redis.on("connect", () => {
 });
 
 module.exports = {
-  retrieve: function (key) {
+  retrieveUser: function (key) {
     return new Promise((resolve, reject) => {
       redis.exists(key, (err, resp) => {
         if (resp === 1) {
@@ -24,7 +24,7 @@ module.exports = {
       });
     });
   },
-  save: async function (key, userObj) {
+  createUser: async function (key, userObj) {
     return new Promise((resolve, reject) => {
       redis.exists(key, (err, resp) => {
         if (resp !== 1) {
@@ -38,7 +38,7 @@ module.exports = {
       });
     });
   },
-  remove: async function (key) {
+  deleteUser: async function (key) {
     return new Promise((resolve, reject) => {
       redis.exists(key, (err, resp) => {
         if (resp === 1) {
