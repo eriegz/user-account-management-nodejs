@@ -35,8 +35,7 @@ router.post("/auth/login", ...authValidation.login, (req, res) => {
     // Finally, return the token inside the "Set-Cookie" response header:
     res.cookie("token", token, { maxAge: tokenLifespanMilliseconds });
     res.send();
-  }).catch((error) => {
-    logger.error(error);
+  }).catch(() => {
     let msg = "Invalid username or password";
     logger.error(msg);
     res.status(401).send({ error: msg });

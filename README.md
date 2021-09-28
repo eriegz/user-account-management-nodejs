@@ -46,4 +46,7 @@ Code-wise, the REST API follows a typical architecture, i.e.:
   - **validation**
 
 ## **Notes:**
-- at the time of writing, this application was built to run in a single environment: "local" (case-sensitive; see above for how to pass this environment variable to the application). Other environment files are empty for now.
+The following features were intentionally not implemented, as they were deemed of scope for the task:
+  - config files for non-local environments (empty files for other environments are included just as templates)
+  - any CORS configuration for Express.js
+  - HTTPS communication / SSL certificates
