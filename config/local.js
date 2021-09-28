@@ -1,6 +1,9 @@
 module.exports = {
-  PORT: 3000,
+  HTTP_PORT: 3000,
+  HTTPS_PORT: 3443,
   VERSION: require("../package.json").version,
+  SSL_CERT_PATH: "security/ssl/local/localhost-cert.crt",
+  SSL_KEY_PATH: "security/ssl/local/localhost-key.pem",
   REDIS_HOST: "localhost",
   REDIS_PORT: 6379,
   BCRYPT_SALT_ROUNDS: 10,
