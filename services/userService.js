@@ -21,9 +21,15 @@ module.exports = {
   },
   retrieveUser: function (username) {
     return new Promise((resolve, reject) => {
-      redis.hgetall(username, (err, resp) => {
-        if (resp !== null) {
-          resolve(resp);
+      redis.hgetall(username, (err, result) => {
+        if (result !== null) {
+          // Callers shouldn't need access to sensitive user fields such as the password (we have an "authenticateUser"
+          // function below built specifically for that purpose), so I'm removing it from the user object to reduce the
+          // risk of other code mistakenly doing something unsafe with it:
+          let sanitizedUserObj = {
+            username: result.username
+          };
+          resolve(sanitizedUserObj);
         } else {
           let msg = "No user with that username exists";
           logger.error(msg);
@@ -68,6 +74,8 @@ module.exports = {
       });
     });
   },
+  // This function checks the password provided against the one saved in the redis store, and if they match it will
+  // respond with the user object (minus sensitive fields):
   authenticateUser: function (username, plainTextPassword) {
     return new Promise((resolve, reject) => {
       redis.hgetall(username, (err, userJson) => {
@@ -76,7 +84,12 @@ module.exports = {
         }
         bcrypt.compare(plainTextPassword, userJson.password, function (err, result) {
           if (result === true) {
-            resolve();
+            // There's no further need for the password field beyond this point, so it's probably best to remove it so
+            // that other code doesn't mistakenly do something unsafe with it:
+            let sanitizedUserObj = {
+              username: result.username
+            };
+            resolve(sanitizedUserObj);
           } else {
             reject();
           }

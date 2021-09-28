@@ -1,16 +1,7 @@
 const { body } = require("express-validator");
-const passwordValidator = require('password-validator');
-
-const passwordCriteria = new passwordValidator();
-passwordCriteria
-  .has().uppercase()
-  .has().lowercase()
-  .has().digits()
-  .has().symbols()
-  .is().not().oneOf(['Passw0rd!', 'Password123']);
 
 module.exports = {
-  registration: [
+  login: [
     body("username")
       .exists({ checkNull: true })
       .withMessage("username field cannot be undefined or null")
@@ -25,11 +16,9 @@ module.exports = {
       .withMessage("password field cannot be undefined or null")
       .isString()
       .withMessage("password field must be of type string")
-      .isLength({ min: 8, max: 40 })
-      .withMessage("password must be between 8 and 40 characters long (inclusive)")
-      .custom(value => passwordCriteria.validate(value))
-      .withMessage("password must contain an uppercase letter, a numeral, a special character (e.g.: !@#$%^&*()_+), "
-        + "and must not be easily guessable")
+      .notEmpty()
+      .withMessage("password field cannot be empty")
+    // No need to check password complexity during logins
   ]
-  // Insert validations for other user-related endpoints here, as needed
+  // Insert validations for other auth-related endpoints here, as needed
 }

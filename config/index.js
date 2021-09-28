@@ -1,5 +1,5 @@
-// NOTE: This module contains a single function whose only job is to match the "NODE_ENV" environment variable to the
-// correct config file.
+// This file matches the "NODE_ENV" environment variable to the correct config file (case-sensitive). See the README.md
+// for instructions on how to pass this value to the application.
 
 const logger = require("../util/logger");
 
