@@ -4,17 +4,18 @@ This application is a simple REST API server that allows user account management
 
 ## **Setup:**
 
-This application persists all of its data inside of a redis store, which it expects to find at runtime. To spin up a redis instance on your own machine, follow these steps:
+This application persists all of its data inside of a redis store, which it expects to find at runtime on the default port of `6379`. To spin up a redis instance on your own machine, follow these steps:
 
 Windows:
 
 - First, install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - Next, at the time of writing you'll then need to [manually update WSL to version 2](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 - Then, pull and run the [official redis Docker image](https://hub.docker.com/_/redis)
+  - `docker pull redis`
 - Finally, you can run the Docker image via the following command:
   - `docker run --name redis-container --publish=6379:6379 -d redis`
 
-macOS:
+macOS / Linux:
 
 - You're on your own here ;)
 
