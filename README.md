@@ -21,7 +21,11 @@ macOS / Linux:
 
 ## **How to run the application:**
 
-To run the application on your local machine, execute the following command:
+As usual, first install all Node modules:
+
+`npm i`
+
+Then, to run the application on your local machine, execute the following command:
 
 `npm run env NODE_ENV=local -- npm run start`
 
