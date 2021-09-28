@@ -31,7 +31,7 @@ To run the application on your local machine, execute the following command:
 ## **Design Approach:**
 
 This REST API was designed to be as full-featured and secure as possible, while using the fewest lines of code possible (without sacrificing readability). And in order to avoid reinventing the wheel and / or introducing security vulnerabilities, the following open-source Node modules were leveraged to provide the various functionality listed below:
-- redis "ORM" functionality is handled by [node-redis](https://www.npmjs.com/package/redis)
+- redis "ORM" functionality is handled by [ioredis](https://www.npmjs.com/package/ioredis)
 - password hashing / verification is handled by [bcrypt](https://www.npmjs.com/package/bcrypt)
 - request validation is handled by [express-validator](https://www.npmjs.com/package/express-validator)
 - password complexity validation is handled by [password-validator](https://www.npmjs.com/package/password-validator)
