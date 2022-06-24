@@ -17,7 +17,7 @@ Windows:
 
 macOS / Linux:
 
-- You're on your own here ;)
+- Coming soon.
 
 ## **How to run the application:**
 
