@@ -1,7 +1,7 @@
 {
   "name": "acct-mgmt-coding-challenge",
   "version": "0.0.1",
-  "description": "lendesk-coding-challenge",
+  "description": "user-account-management",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

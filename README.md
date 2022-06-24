@@ -1,4 +1,4 @@
-# **Lendesk Coding Challenge**
+# **User Account Management (Node.js)**
 
 This application is a simple backend REST API server that facilitates user account management (i.e.: user registration, login, etc.), and saves its data into a redis store.
 
