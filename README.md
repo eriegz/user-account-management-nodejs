@@ -10,14 +10,18 @@ Windows:
 
 - First, install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - Next, at the time of writing you'll then need to [manually update WSL to version 2](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
-- Then, pull and run the [official redis Docker image](https://hub.docker.com/_/redis)
+- Then, pull and run the [official redis Docker image](https://hub.docker.com/_/redis) by opening a terminal and running:
   - `docker pull redis`
 - Finally, you can run the Docker image via the following command *(6379 is redis' default port)*:
   - `docker run --name redis-container --publish=6379:6379 -d redis`
 
 macOS / Linux:
 
-- Coming soon.
+- First, install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- Then, pull and run the [official redis Docker image](https://hub.docker.com/_/redis) by opening a terminal and running:
+  - `docker pull redis`
+- Finally, you can run the Docker image via the following command *(6379 is redis' default port)*:
+  - `docker run --name redis-container --publish=6379:6379 -d redis`
 
 ## **How to run the application:**
 

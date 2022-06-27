@@ -6,11 +6,8 @@ const userService = require("../services/userService");
 
 const router = express.Router();
 
-// Below: a more or less CRUD implementation for users (we're just missing an "update" endpoint, as there wasn't a need
-// for one during development, and the requirements didn't specifically ask for one).
-
-// The "create" endpoint:
-router.post("/user/register", ...userValidation.registration, (req, res) => {
+// "Create":
+router.post("/user/register", ...userValidation.usernameAndPassword, (req, res) => {
   // Validate the incoming request to ensure things such as username format, password complexity, etc.:
   const validationErrors = expressValidator.validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -27,8 +24,7 @@ router.post("/user/register", ...userValidation.registration, (req, res) => {
   });
 });
 
-// The "read" endpoint, which wasn't specifically requested in the requirements, but it was useful during development,
-// so I've just left it here:
+// "Read":
 router.get("/user/:username", (req, res) => {
   userService.retrieveUser(req.params.username).then((result) => {
     res.send(result);
@@ -37,8 +33,25 @@ router.get("/user/:username", (req, res) => {
   });
 });
 
-// And the "delete" endpoint, which also wasn't specifically requested in the requirements, but it was useful during
-// development and so I've just left it here:
+// "Update":
+router.put("/user", ...userValidation.usernameAndPassword, (req, res) => {
+  // Validate the incoming request to ensure things such as username format, password complexity, etc.:
+  const validationErrors = expressValidator.validationResult(req);
+  if (!validationErrors.isEmpty()) {
+    return res.status(400).send({
+      error: "One or more fields are invalid",
+      errors: validationErrors.errors
+    });
+  }
+
+  userService.updateUser(req.body).then((result) => {
+    res.send(result);
+  }).catch((error) => {
+    res.status(400).send({ error });
+  });
+});
+
+// "Delete":
 router.delete("/user/:username", (req, res) => {
   userService.deleteUser(req.params.username).then((result) => {
     res.send(result);

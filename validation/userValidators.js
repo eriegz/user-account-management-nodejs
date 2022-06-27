@@ -10,7 +10,7 @@ passwordCriteria
   .is().not().oneOf(['Passw0rd!', 'Password123']);
 
 module.exports = {
-  registration: [
+  usernameAndPassword: [
     body("username")
       .exists({ checkNull: true })
       .withMessage("username field cannot be undefined or null")
